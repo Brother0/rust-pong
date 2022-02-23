@@ -25,13 +25,13 @@ impl App {
     fn render(&mut self, args: &RenderArgs) {
         use graphics::*;
 
-        const BACKGROUND: [f32; 4] = [0.0, 0.5, 0.5, 1.0];
-        const FOREGROUND: [f32; 4] = [0.0, 0.0, 1.0, 1.0];
+        const BACKGROUND: [f32; 4] = [0.0, 0.0, 0.0, 1.0];
+        const FOREGROUND: [f32; 4] = [1.0, 1.0, 1.0, 1.0];
 
-        let left = rectangle::square(0.0, 0.0, 50.0);
+        let left = rectangle::square(0.0, 0.0, 80.0);
         let left_pos = self.left_pos as f64;
 
-        let right = rectangle::square(0.0, 0.0, 50.0);
+        let right = rectangle::square(0.0, 0.0, 80.0);
         let right_pos = self.right_pos as f64;
 
         let ball = rectangle::square(0.0, 0.0, 10.0);
@@ -40,7 +40,7 @@ impl App {
 
         self.gl.draw(args.viewport(), |c, gl| {
             clear(BACKGROUND, gl);
-            rectangle(FOREGROUND, left, c.transform.trans(-40.0, left_pos), gl);
+            rectangle(FOREGROUND, left, c.transform.trans(-70.0, left_pos), gl);
             rectangle(FOREGROUND, right, c.transform.trans(args.width as f64 - 10.0, right_pos), gl);
             rectangle(FOREGROUND, ball, c.transform.trans(ball_x, ball_y), gl);
         });
